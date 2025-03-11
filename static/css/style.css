@@ -770,3 +770,24 @@ textarea {
         position: static;
     }
 }
+
+/* Introduction edit button */
+.intro-edit {
+    margin-top: 1rem;
+}
+
+.intro-edit-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    padding: 0.3rem 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.2s ease;
+}
+
+.intro-edit-link:hover {
+    background-color: var(--light-gray);
+}

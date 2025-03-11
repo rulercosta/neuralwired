@@ -11,6 +11,11 @@
     <div class="intro-section">
         <h1>neuralwired blog</h1>
         <p>{{ content.introduction|safe }}</p>
+        {% if is_authenticated %}
+        <div class="intro-edit">
+            <a href="{{ url_for('edit_intro') }}" class="intro-edit-link" title="Edit Introduction">Edit</a>
+        </div>
+        {% endif %}
     </div>
 </header>
 
