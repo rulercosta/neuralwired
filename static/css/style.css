@@ -1,0 +1,747 @@
+/* Base styles */
+:root {
+    --text-color: #111;
+    --background-color: #fff;
+    --accent-color: #333;
+    --light-gray: #f8f9fa;
+    --border-color: #ddd;
+    --header-bg: #fff;
+    --editor-bg: #fff;
+    --editor-text: #111;
+    --border-solid: #000;
+    
+    /* Define standard sizes to prevent layout shifts */
+    --header-height: 60px;
+    --footer-height: 60px;
+    --header-padding: 1rem;
+}
+
+:root[data-theme="dark"] {
+    --text-color: #eee;
+    --background-color: #111;
+    --accent-color: #ccc;
+    --light-gray: #222;
+    --border-color: #333;
+    --header-bg: #111;
+    --editor-bg: #1e1e1e;
+    --editor-text: #eee;
+    --border-solid: #fff;
+}
+
+/* Theme transition control */
+html.theme-initializing * {
+    transition: none !important;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Space Mono", monospace;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding: 0 1rem;
+    padding-top: var(--header-height);
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    padding-bottom: calc(var(--footer-height) + 2rem);
+}
+
+/* Typography */
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+/* Layout sections */
+header {
+    margin-bottom: 2rem;
+}
+
+.intro-section {
+    margin-bottom: 3rem;
+}
+
+.content-section {
+    margin-bottom: 2.5rem;
+}
+
+/* Lists */
+ul {
+    list-style-position: outside;
+    margin-bottom: 1.5rem;
+    padding-left: 2.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Header styles */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--header-bg);
+    padding: 0;
+    border-bottom: 1px solid var(--border-solid);
+    z-index: 100;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.site-header .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 var(--header-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.header-left {
+    font-weight: bold;
+}
+
+.header-left a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.admin-links {
+    display: flex;
+    gap: 0.75rem;  /* Match the gap with header-icons */
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: "Space Mono", monospace;
+    font-size: 1.5rem;
+    padding: 0 0.25rem;
+    color: var(--text-color);
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.theme-toggle:hover {
+    opacity: 0.7;
+}
+
+.admin-links a {
+    text-decoration: none;
+}
+
+.admin-links a:hover {
+    text-decoration: underline;
+}
+
+.admin-links .icon-link {
+    font-family: "Space Mono", monospace;
+    font-size: 1.5rem;
+    text-decoration: none;
+    padding: 0 0.25rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-links .icon-link:hover {
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: var(--footer-height);
+    background-color: var(--background-color);
+    padding: 0;
+    border-top: 1px solid var(--border-solid);
+    z-index: 100;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+footer .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.simple-link {
+    color: var(--text-color);
+}
+
+/* Form elements */
+.auth-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--editor-bg);
+    color: var(--editor-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--text-color);
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    display: inline-block;
+    font-family: "Space Mono", monospace;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+.back-link {
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+/* Flash messages */
+.flash-messages {
+    margin-bottom: 1rem;
+}
+
+.flash-message {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+}
+
+/* Editor styles */
+.editor-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+}
+
+.editor-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--editor-bg);
+    border-color: var(--border-color);
+}
+
+.toolbar-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-family: "Space Mono", monospace;
+    color: var(--editor-text);
+    border-color: var(--border-color);
+}
+
+.toolbar-btn:hover {
+    background-color: var(--light-gray);
+    color: var(--text-color);
+}
+
+.toolbar-select {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--editor-bg);
+    color: var(--editor-text);
+    font-family: "Space Mono", monospace;
+}
+
+.toolbar-divider {
+    width: 1px;
+    background-color: var(--border-color);
+    margin: 0 0.25rem;
+}
+
+.editable-list {
+    margin-bottom: 1rem;
+}
+
+.editable-item {
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.editable-input {
+    flex-grow: 1;
+    margin-right: 0.5rem;
+}
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.add-item-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    font-family: "Space Mono", monospace;
+}
+
+.full-width-input {
+    width: 100%;
+    min-height: 100px;
+}
+
+.form-actions {
+    margin-top: 2rem;
+    display: flex;
+}
+
+/* Page management styles */
+.pages-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+.pages-table th, 
+.pages-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.pages-table th {
+    font-weight: 600;
+}
+
+.actions-cell {
+    display: flex;
+    gap: 1rem;
+}
+
+.action-btn {
+    font-size: 0.875rem;
+    text-decoration: underline;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text-color);
+    font-family: "Space Mono", monospace;
+}
+
+.action-btn:hover {
+    color: var(--accent-color);
+}
+
+.delete-btn {
+    cursor: pointer;
+}
+
+.no-pages-message {
+    margin: 2rem 0;
+    font-style: italic;
+}
+
+.inline-form {
+    display: inline-block;
+}
+
+.input-help {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.content-editor {
+    min-height: 300px;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--editor-bg);
+    color: var(--editor-text);
+    overflow-y: auto;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.page-content {
+    margin-top: 1.5rem;
+}
+
+.excerpt-editor {
+    min-height: 100px; /* Smaller than the main content editor */
+    background-color: var(--editor-bg);
+    color: var(--editor-text);
+}
+
+.excerpt-toolbar {
+    margin-bottom: 0.5rem;
+}
+
+/* Navigation styles */
+.site-nav.page-nav {
+    margin: 0 0 2rem;
+}
+
+.site-nav.page-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.site-nav.page-nav li:last-child {
+    margin-left: auto;
+}
+
+.site-nav.page-nav a {
+    text-decoration: underline;
+}
+
+/* Adjust spacing for .intro-section when followed by nav */
+.intro-section + .site-nav.page-nav {
+    margin-top: -1rem;
+}
+
+/* Blog-specific styles - simplified */
+.editor-options {
+    margin: 1.5rem 0;
+    padding-bottom: 1rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+    margin-right: 1rem;
+}
+
+.blog-post {
+    margin-bottom: 3rem;
+}
+
+.post-header {
+    margin-bottom: 1.5rem;
+}
+
+.post-title {
+    margin-bottom: 0.5rem;
+}
+
+.post-meta {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.post-content {
+    line-height: 1.7;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem 0;
+}
+
+.post-content h2, 
+.post-content h3 {
+    margin-top: 2rem;
+}
+
+/* Simplified blog listing */
+.post-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.post-card {
+    margin-bottom: 2rem;
+}
+
+.post-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.post-excerpt {
+    margin: 1rem 0;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+}
+
+/* Simplified featured posts with no border or background */
+.featured-posts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.featured-post {
+    margin-bottom: 2rem;
+}
+
+/* Remove borders between post items */
+.post-item {
+    margin-bottom: 2rem;
+}
+
+.post-list .view-all {
+    margin-top: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+    :root {
+        --header-height: 80px;
+        --header-padding: 0.75rem;
+    }
+    
+    body {
+        font-size: 0.95rem;
+        padding-top: var(--header-height);
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+    
+    .container {
+        padding: 1.5rem 0.75rem;
+        padding-bottom: calc(var(--footer-height) + 2rem);
+    }
+    
+    .site-header .container {
+        flex-direction: row; /* Change from column to row */
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 0 0.75rem;
+    }
+
+    /* Ensure the icons stay a reasonable size on mobile */
+    .admin-links .icon-link {
+        font-size: 1.25rem;
+        padding: 0 0.15rem;
+    }
+
+    /* Adjust gap between icons for tighter mobile layout */
+    .admin-links {
+        gap: 0.5rem;
+    }
+
+    .theme-toggle {
+        font-size: 1.25rem;
+        padding: 0 0.15rem;
+    }
+
+    .header-icons {
+        gap: 0.5rem;
+    }
+
+    .admin-links {
+        gap: 0.5rem;
+    }
+    
+    /* Mobile table adjustments */
+    .pages-table, 
+    .pages-table tbody, 
+    .pages-table tr {
+        display: block;
+        width: 100%;
+    }
+    
+    .pages-table thead {
+        display: none;
+    }
+    
+    .pages-table tr {
+        position: relative;
+        margin-bottom: 1rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .pages-table td {
+        display: block;
+        border: none;
+        padding: 0.25rem 0;
+    }
+    
+    /* Show all columns but style them differently */
+    .pages-table td:first-child {
+        font-weight: bold;
+        font-size: 1.1rem;
+        padding-bottom: 0.25rem;
+    }
+    
+    .pages-table td:nth-child(2) {
+        font-size: 0.9rem;
+        color: var(--accent-color);
+        padding-bottom: 0.25rem;
+    }
+    
+    .pages-table td:nth-child(3) {
+        font-size: 0.85rem;
+        color: #666;
+        font-style: italic;
+        padding-bottom: 0.5rem;
+    }
+    
+    /* Format actions cell */
+    .actions-cell {
+        display: flex;
+        flex-direction: row;  /* Change from column to row */
+        justify-content: space-between; /* Position items on opposite sides */
+        width: 100%;
+        padding: 0.25rem 0;
+    }
+    
+    .action-btn {
+        padding: 0.5rem 0;
+        font-size: 0.95rem;
+    }
+    
+    /* Remove margin-bottom from edit-btn since they're now side by side */
+    .edit-btn {
+        margin-bottom: 0;
+    }
+    
+    /* Remove absolute positioning */
+    .edit-btn,
+    .delete-btn {
+        position: static;
+    }
+    
+    .actions-cell .inline-form {
+        position: static;
+    }
+}

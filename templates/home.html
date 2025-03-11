@@ -1,0 +1,79 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}neuralwired - Blog{% endblock %}
+
+{% block meta %}
+<meta name="description" content="Personal blog about neural networks, AI, and technology">
+{% endblock %}
+
+{% block content %}
+<header>
+    <div class="intro-section">
+        <h1>neuralwired blog</h1>
+        <p>{{ content.introduction|safe }}</p>
+    </div>
+</header>
+
+<main>
+    {% if featured_posts %}
+    <section id="featured" class="content-section">
+        <h1>featured</h1>
+        <div class="featured-posts">
+            {% for post in featured_posts %}
+            <article class="featured-post">
+                <h3><a href="{{ url_for('blog_post', slug=post.slug) }}">{{ post.title }}</a></h3>
+                <div class="post-meta">
+                    <span class="post-date">{{ post.published_date.split(' ')[0] }}</span>
+                </div>
+                <div class="post-excerpt">
+                    {% if post.excerpt %}
+                    {{ post.excerpt|safe }}
+                    {% else %}
+                    {{ (post.content|striptags)[:150] }}{% if (post.content|striptags)|length > 150 %}...{% endif %}
+                    {% endif %}
+                </div>
+                <a href="{{ url_for('blog_post', slug=post.slug) }}" class="read-more">read more →</a>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <section id="recent-posts" class="content-section">
+        <h1>recent posts</h1>
+        <div class="post-list">
+            {% if recent_posts %}
+                {% for post in recent_posts %}
+                <article class="post-item">
+                    <h3><a href="{{ url_for('blog_post', slug=post.slug) }}">{{ post.title }}</a></h3>
+                    <div class="post-meta">
+                        <span class="post-date">{{ post.published_date.split(' ')[0] }}</span>
+                    </div>
+                    {% if post.excerpt %}
+                    <div class="post-excerpt">{{ post.excerpt|safe }}</div>
+                    {% endif %}
+                    <a href="{{ url_for('blog_post', slug=post.slug) }}" class="read-more">read more →</a>
+                </article>
+                {% endfor %}
+                <div class="view-all">
+                    <a href="{{ url_for('blog_index') }}" class="view-all-link">view all posts →</a>
+                </div>
+            {% else %}
+                <p class="no-posts">No posts yet.</p>
+            {% endif %}
+        </div>
+    </section>
+
+    {% if about_page %}
+    <section id="about" class="content-section">
+        <h2>about</h2>
+        <div class="about-preview">
+            {{ (about_page.content|striptags)[:200] }}{% if (about_page.content|striptags)|length > 200 %}...{% endif %}
+            <div class="read-more-container">
+                <a href="{{ url_for('view_page', slug='about') }}" class="read-more">read more →</a>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+</main>
+{% endblock %}

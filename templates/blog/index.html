@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Blog - neuralwired{% endblock %}
+
+{% block content %}
+<header>
+    <div class="intro-section">
+        <h1>blogs</h1>
+    </div>
+    <div class="site-nav page-nav">
+        <ul>
+            <li><a href="{{ url_for('home') }}">← back to home</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <section class="content-section blog-archive">
+        {% if posts %}
+            <div class="post-grid">
+                {% for post in posts %}
+                <article class="post-card">
+                    <h3><a href="{{ url_for('blog_post', slug=post.slug) }}">{{ post.title }}</a></h3>
+                    <div class="post-meta">
+                        <span class="post-date">{{ post.published_date.split(' ')[0] }}</span>
+                    </div>
+                    {% if post.excerpt %}
+                    <div class="post-excerpt">{{ post.excerpt|safe }}</div>
+                    {% else %}
+                    <div class="post-excerpt">{{ (post.content|striptags)[:150] }}{% if (post.content|striptags)|length > 150 %}...{% endif %}</div>
+                    {% endif %}
+                    <a href="{{ url_for('blog_post', slug=post.slug) }}" class="read-more">read more →</a>
+                </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-posts">No posts published yet.</p>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}

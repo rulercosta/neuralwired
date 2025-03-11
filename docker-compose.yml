@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./blogger.db:/app/blogger.db
+    env_file:
+      - .env
+    restart: always

@@ -1,0 +1,8 @@
+Flask
+Flask-Login
+Werkzeug
+Jinja2
+MarkupSafe
+itsdangerous
+click
+gunicorn
