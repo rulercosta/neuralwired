@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Allow transitions after initial page load
+    // Force layout calculation and prevent shifts
+    const forceReflow = document.body.offsetHeight;
+    
+    // Allow transitions after initial page load with a slight delay
     setTimeout(function() {
         document.documentElement.classList.remove('theme-initializing');
-    }, 100);
+    }, 200);
 
     // Theme toggle functionality
     const themeToggle = document.querySelector('.theme-toggle');
@@ -58,4 +61,20 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('beforeunload', function() {
         document.documentElement.classList.add('theme-initializing');
     });
+    
+    // Pre-load theme-specific elements to prevent layout shifts
+    function preloadThemeElements() {
+        // Create hidden elements to force browser to calculate dimensions
+        const preloadDark = document.createElement('div');
+        preloadDark.style.cssText = 'position:absolute;visibility:hidden;height:0;width:0;';
+        preloadDark.style.backgroundColor = 'var(--background-color)';
+        document.body.appendChild(preloadDark);
+        
+        // Remove after computation
+        setTimeout(function() {
+            preloadDark.remove();
+        }, 100);
+    }
+    
+    preloadThemeElements();
 });

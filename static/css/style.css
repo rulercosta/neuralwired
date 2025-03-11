@@ -28,9 +28,19 @@
     --border-solid: #fff;
 }
 
-/* Theme transition control */
+/* Theme transition control - only apply transitions when ready */
 html.theme-initializing * {
     transition: none !important;
+}
+
+html:not(.theme-initializing) {
+    transition: background-color 0.3s ease;
+}
+
+html:not(.theme-initializing) body,
+html:not(.theme-initializing) .site-header,
+html:not(.theme-initializing) footer {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 * {
@@ -46,7 +56,7 @@ body {
     background-color: var(--background-color);
     padding: 0 1rem;
     padding-top: var(--header-height);
-    transition: color 0.3s ease, background-color 0.3s ease;
+    min-height: 100vh;
 }
 
 .container {
@@ -109,7 +119,7 @@ li {
     margin-bottom: 0.5rem;
 }
 
-/* Header styles */
+/* Header styles - ensure fixed dimensions */
 .site-header {
     position: fixed;
     top: 0;
@@ -121,7 +131,6 @@ li {
     padding: 0;
     border-bottom: 1px solid var(--border-solid);
     z-index: 100;
-    transition: background-color 0.3s ease;
     display: flex;
     align-items: center;
 }
@@ -139,6 +148,9 @@ li {
 
 .header-left {
     font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .header-left a {
@@ -149,17 +161,21 @@ li {
 .header-right {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .header-icons {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    height: calc(var(--header-height) - 2px);
 }
 
 .admin-links {
     display: flex;
-    gap: 0.75rem;  /* Match the gap with header-icons */
+    gap: 0.75rem;
+    height: 100%;
+    align-items: center;
 }
 
 .theme-toggle {
@@ -174,7 +190,7 @@ li {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.3s ease;
+    height: calc(var(--header-height) - 2px);
 }
 
 .theme-toggle:hover {
@@ -183,6 +199,9 @@ li {
 
 .admin-links a {
     text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .admin-links a:hover {
@@ -198,6 +217,7 @@ li {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
 }
 
 .admin-links .icon-link:hover {
@@ -205,7 +225,7 @@ li {
     opacity: 0.7;
 }
 
-/* Footer */
+/* Footer - ensure fixed dimensions */
 footer {
     position: fixed;
     bottom: 0;
@@ -221,7 +241,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease;
 }
 
 footer .container {
@@ -238,11 +257,18 @@ footer .container {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    height: 100%;
+    align-items: center;
 }
 
 .social-links a {
     font-size: 1.5rem;
     color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-decoration: none;  /* Add this line to remove underline */
 }
 
 .simple-link {
@@ -617,7 +643,6 @@ textarea {
 /* Responsive adjustments */
 @media screen and (max-width: 600px) {
     :root {
-        --header-height: 80px;
         --header-padding: 0.75rem;
     }
     
@@ -640,11 +665,11 @@ textarea {
     }
     
     .site-header .container {
-        flex-direction: row; /* Change from column to row */
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
-        padding: 0 0.75rem;
+        padding: 0 var(--header-padding);
     }
 
     /* Ensure the icons stay a reasonable size on mobile */
