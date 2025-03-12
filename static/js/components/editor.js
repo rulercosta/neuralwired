@@ -8,11 +8,6 @@ class EditorComponent {
         this.isEditingIntro = false;
         this.mode = 'create'; // 'create', 'edit', 'editIntro'
         this.pageType = 'page'; // 'page' or 'blog'
-        this.message = '';
-    }
-
-    setMessage(message) {
-        this.message = message;
     }
 
     async fetchData(slug) {
@@ -29,7 +24,6 @@ class EditorComponent {
             } catch (error) {
                 console.error('Error fetching introduction:', error);
                 this.page = null;
-                this.setMessage('Error loading introduction. Please try again.');
             }
             return;
         }
@@ -54,7 +48,6 @@ class EditorComponent {
         } catch (error) {
             console.error(`Error fetching page with slug "${slug}":`, error);
             this.page = null;
-            this.setMessage(`Error loading page: ${error.message || 'Unknown error'}`);
         }
     }
 
@@ -81,12 +74,6 @@ class EditorComponent {
                 </ul>
             </div>
         </header>
-
-        ${this.message ? `
-            <div class="flash-messages">
-                <p class="flash-message">${this.message}</p>
-            </div>
-        ` : ''}
 
         <form id="intro-editor-form" class="editor-form" autocomplete="off">
             <div class="form-group">
@@ -130,12 +117,6 @@ class EditorComponent {
                 </ul>
             </div>
         </header>
-
-        ${this.message ? `
-            <div class="flash-messages">
-                <p class="flash-message">${this.message}</p>
-            </div>
-        ` : ''}
 
         <form id="page-editor-form" class="editor-form" autocomplete="off">
             <!-- Hidden field to prevent autofill -->
@@ -334,7 +315,6 @@ class EditorComponent {
                     }
                 } catch (error) {
                     console.error('Error uploading image:', error);
-                    this.setMessage(`Error uploading image: ${error.message || 'Unknown error'}`);
                     
                     // Remove placeholder if there was an error
                     const placeholder = document.querySelector('.image-placeholder');
@@ -366,7 +346,6 @@ class EditorComponent {
                     router.navigate('/');
                 } catch (error) {
                     console.error('Error saving introduction:', error);
-                    this.setMessage(`Error saving introduction: ${error.message || 'Unknown error'}`);
                     document.getElementById('content-container').innerHTML = this.render();
                     this.postRender();
                 }
@@ -438,7 +417,6 @@ class EditorComponent {
                     }
                 } catch (error) {
                     console.error('Error saving page:', error);
-                    this.setMessage(`Error saving page: ${error.message || 'Unknown error'}`);
                     document.getElementById('content-container').innerHTML = this.render();
                     this.postRender();
                 }

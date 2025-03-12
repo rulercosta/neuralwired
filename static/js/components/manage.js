@@ -5,11 +5,6 @@
 class ManagePagesComponent {
     constructor() {
         this.pages = [];
-        this.message = '';
-    }
-
-    setMessage(message) {
-        this.message = message;
     }
 
     async fetchData() {
@@ -35,12 +30,6 @@ class ManagePagesComponent {
                 </ul>
             </div>
         </header>
-
-        ${this.message ? `
-            <div class="flash-messages">
-                <p class="flash-message">${this.message}</p>
-            </div>
-        ` : ''}
 
         <div class="actions">
             <a href="/new" class="btn-primary">Create New Page</a>
@@ -89,15 +78,11 @@ class ManagePagesComponent {
                 if (confirm('Are you sure you want to delete this page?')) {
                     try {
                         await api.deletePage(slug);
-                        this.setMessage(`Page "${slug}" deleted successfully!`);
                         await this.fetchData();
                         document.getElementById('content-container').innerHTML = this.render();
                         this.postRender();
                     } catch (error) {
                         console.error(`Error deleting page "${slug}":`, error);
-                        this.setMessage(`Error deleting page: ${error.message}`);
-                        document.getElementById('content-container').innerHTML = this.render();
-                        this.postRender();
                     }
                 }
             });

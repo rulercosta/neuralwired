@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request, jsonify, redirect, flash, send_from_directory
+from flask import Flask, render_template, session, request, jsonify, redirect, send_from_directory
 import os
 from database import init_db, verify_credentials
 
@@ -51,7 +51,6 @@ def login():
         session['logged_in'] = True
         return redirect('/')
     
-    flash('Invalid username or password')
     return redirect('/login')
 
 @app.route('/logout', methods=['GET'])

@@ -304,6 +304,12 @@ textarea {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Add input error styling */
+input.input-error {
+    border-color: #ff6b6b;
+    background-color: rgba(255, 107, 107, 0.05);
+}
+
 .btn-primary,
 .btn-secondary {
     padding: 0.5rem 1rem;
@@ -327,16 +333,6 @@ textarea {
 .back-link {
     margin-top: 1rem;
     display: inline-block;
-}
-
-/* Flash messages */
-.flash-messages {
-    margin-bottom: 1rem;
-}
-
-.flash-message {
-    padding: 0.5rem;
-    border: 1px solid var(--border-color);
 }
 
 /* Editor styles */

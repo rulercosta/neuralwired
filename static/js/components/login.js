@@ -16,21 +16,15 @@ class LoginComponent {
         <div class="auth-container">
             <h1>Login</h1>
             
-            ${this.errorMessage ? `
-                <div class="flash-messages">
-                    <p class="flash-message">${this.errorMessage}</p>
-                </div>
-            ` : ''}
-            
             <form id="login-form">
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
+                    <input type="text" id="username" name="username" required ${this.errorMessage ? 'class="input-error"' : ''}>
                 </div>
                 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" required ${this.errorMessage ? 'class="input-error"' : ''}>
                 </div>
                 
                 <button type="submit" class="btn-primary">Login</button>
@@ -57,7 +51,7 @@ class LoginComponent {
                     router.navigate('/');
                 } catch (error) {
                     this.setError('Invalid username or password');
-                    // Re-render with error message
+                    // Re-render with error styling on inputs
                     document.getElementById('content-container').innerHTML = this.render();
                     this.postRender();
                 }
