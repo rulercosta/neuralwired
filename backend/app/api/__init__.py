@@ -1,6 +1,4 @@
-from flask import Blueprint
-
-api = Blueprint('api', __name__)
-
-# Import routes after creating blueprint to avoid circular imports
+from .blueprint import api
 from . import routes
+
+__all__ = ['api', 'routes']

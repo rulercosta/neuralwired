@@ -1,7 +1,7 @@
 from flask import Flask, render_template, session, request, jsonify, redirect, send_from_directory
 import os
 from database import init_db, verify_credentials
-from api import api
+from .api import api
 
 # Get project root directory
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
