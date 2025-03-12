@@ -8,15 +8,13 @@ class Router {
         this.notFoundHandler = () => {
             document.getElementById('content-container').innerHTML = '<h1>Page Not Found</h1>';
         };
+        this.initialized = false;
         
         // Only add event listeners during init to allow proper sequencing
     }
     
     init() {
-        // Handle initial page load
-        window.addEventListener('DOMContentLoaded', () => {
-            this.handleRouteChange();
-        });
+        this.initialized = true;
         
         // Handle browser back/forward navigation
         window.addEventListener('popstate', () => {
@@ -75,9 +73,12 @@ class Router {
      * Match current URL to routes and execute handler
      */
     handleRouteChange() {
+        // Don't handle routes until initialized
+        if (!this.initialized) {
+            return;
+        }
+
         const path = window.location.pathname;
-        
-        // Find matching route
         const route = this.findMatchingRoute(path);
         
         if (route) {
@@ -92,7 +93,8 @@ class Router {
             
             // Execute route handler
             route.handler(params);
-        } else {
+        } else if (this.initialized) {
+            // Only show 404 if router is initialized
             this.notFoundHandler();
         }
         

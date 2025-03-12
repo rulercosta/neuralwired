@@ -5,35 +5,54 @@
 class App {
     constructor() {
         this.isAuthenticated = false;
+        this.initialized = false;
     }
 
     async init() {
-        // Set up error handling
-        this.setupErrorHandling();
-        
-        // Register auth state change listener
-        api.addEventListener('authStateChanged', (data) => {
-            this.isAuthenticated = data.authenticated;
-            this.updateComponentsAuthStatus();
+        try {
+            // Set up error handling
+            this.setupErrorHandling();
             
-            // Re-render header when auth state changes
+            // Register auth state change listener
+            api.addEventListener('authStateChanged', (data) => {
+                this.isAuthenticated = data.authenticated;
+                this.updateComponentsAuthStatus();
+                this.renderHeader();
+            });
+            
+            // Check authentication status on app start
+            await this.checkAuthentication();
+            
+            // Setup header and footer which are always present
             this.renderHeader();
-        });
-        
-        // Check authentication status on app start
-        await this.checkAuthentication();
-        
-        // Setup header and footer which are always present
-        this.renderHeader();
-        this.renderFooter();
-        
-        // Setup routing
-        this.setupRouting();
-        
-        // Remove theme-initializing class to allow transitions
-        setTimeout(() => {
-            document.documentElement.classList.remove('theme-initializing');
-        }, 200);
+            this.renderFooter();
+            
+            // Initialize router first
+            router.init();
+            
+            // Setup routing after router is initialized
+            this.setupRouting();
+            
+            // Mark app as initialized
+            this.initialized = true;
+            
+            // Handle initial route
+            router.handleRouteChange();
+            
+            // Remove theme-initializing class to allow transitions
+            setTimeout(() => {
+                document.documentElement.classList.remove('theme-initializing');
+            }, 200);
+        } catch (error) {
+            console.error('Error initializing app:', error);
+            document.getElementById('content-container').innerHTML = `
+                <div class="error-container">
+                    <h1>Something went wrong</h1>
+                    <p>We're having trouble loading the application. Please try again later.</p>
+                    <p><a href="/" class="reload-link">Reload</a></p>
+                </div>
+            `;
+        }
     }
     
     /**
@@ -305,13 +324,8 @@ const app = new App();
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize the router first
-    router.init();
-    
-    // Then initialize the app, which will set up routing and check auth
     app.init().catch(error => {
         console.error('Error initializing app:', error);
-        // Render something helpful if app initialization fails
         document.getElementById('content-container').innerHTML = `
             <div class="error-container">
                 <h1>Something went wrong</h1>
