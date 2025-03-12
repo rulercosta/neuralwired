@@ -51,6 +51,7 @@ class LoginComponent {
                     router.navigate('/');
                 } catch (error) {
                     this.setError('Invalid username or password');
+                    flashMessage.error('Login failed: Invalid username or password');
                     // Re-render with error styling on inputs
                     document.getElementById('content-container').innerHTML = this.render();
                     this.postRender();

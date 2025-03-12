@@ -818,6 +818,47 @@ input.input-error {
     border: 1px dashed var(--border-color);
 }
 
+/* Flash Message Styles - Minimalist Design */
+#flash-message-container {
+    position: fixed;
+    top: calc(var(--header-height) + 20px);
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    pointer-events: none; /* Allow clicks to pass through container */
+}
+
+.flash-message {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    font-family: "Space Mono", monospace;
+    font-size: 0.95rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    pointer-events: auto; /* Make message itself clickable */
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Remove the message type border indicators completely */
+/* Message types with subtle indicators - removed */
+
+/* Responsive adjustments for flash message */
+@media screen and (max-width: 600px) {
+    #flash-message-container {
+        top: calc(var(--header-height) + 10px);
+    }
+    
+    .flash-message {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        max-width: 95%;
+    }
+}
+
 /* Confirmation Dialog Styles */
 #confirm-dialog-container {
     position: fixed;

@@ -82,11 +82,16 @@ class ManagePagesComponent {
                     async () => {
                         try {
                             await api.deletePage(slug);
-                            await this.fetchData();
+                            
+                            // Find and remove the deleted page from the local array
+                            this.pages = this.pages.filter(page => page.slug !== slug);
+                            
+                            // Re-render the component with the updated pages array
                             document.getElementById('content-container').innerHTML = this.render();
                             this.postRender();
                         } catch (error) {
                             console.error(`Error deleting page "${slug}":`, error);
+                            flashMessage.error(`Failed to delete page: ${errorHandler.formatErrorMessage(error)}`);
                         }
                     }
                 );

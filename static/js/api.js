@@ -100,6 +100,7 @@ class ApiClient {
         });
         // Trigger auth state changed event
         this.triggerEvent('authStateChanged', { authenticated: true });
+        flashMessage.success('Logged in successfully');
         return result;
     }
 
@@ -109,6 +110,7 @@ class ApiClient {
         });
         // Trigger auth state changed event
         this.triggerEvent('authStateChanged', { authenticated: false });
+        flashMessage.info('Logged out successfully');
         return result;
     }
 
@@ -137,10 +139,12 @@ class ApiClient {
     }
 
     async updateIntroduction(content) {
-        return this.request('/content/intro', {
+        const result = await this.request('/content/intro', {
             method: 'PUT',
             body: JSON.stringify({ content })
         });
+        flashMessage.success('Introduction updated successfully');
+        return result;
     }
 
     // Pages
@@ -153,23 +157,29 @@ class ApiClient {
     }
 
     async createPage(pageData) {
-        return this.request('/pages', {
+        const result = await this.request('/pages', {
             method: 'POST',
             body: JSON.stringify(pageData)
         });
+        flashMessage.success('Page created successfully');
+        return result;
     }
 
     async updatePage(slug, pageData) {
-        return this.request(`/pages/${slug}`, {
+        const result = await this.request(`/pages/${slug}`, {
             method: 'PUT',
             body: JSON.stringify(pageData)
         });
+        flashMessage.success('Page updated successfully');
+        return result;
     }
 
     async deletePage(slug) {
-        return this.request(`/pages/${slug}`, {
+        const result = await this.request(`/pages/${slug}`, {
             method: 'DELETE'
         });
+        flashMessage.success('Page deleted successfully');
+        return result;
     }
 
     // Blog posts

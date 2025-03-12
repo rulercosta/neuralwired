@@ -45,12 +45,16 @@ class App {
             if (this.isAuthenticated && errorHandler.isAuthError(error)) {
                 console.warn('Auth error detected, logging out');
                 api.logout().catch(e => console.error('Logout error:', e));
+            } else {
+                // Show error message for other errors
+                flashMessage.error(errorHandler.formatErrorMessage(error));
             }
         });
         
         // Add global error handling
         window.addEventListener('error', (event) => {
             console.error('Global error:', event.error);
+            flashMessage.error('An unexpected error occurred');
         });
     }
     
