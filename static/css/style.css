@@ -495,6 +495,12 @@ textarea {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.content-editor img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+}
+
 .page-content {
     margin-top: 1.5rem;
 }
@@ -790,4 +796,28 @@ textarea {
 
 .intro-edit-link:hover {
     background-color: var(--light-gray);
+}
+
+/* Error handling styles */
+.error-container {
+    text-align: center;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.reload-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    text-decoration: underline;
+}
+
+/* Image upload styles */
+.image-placeholder {
+    background-color: var(--light-gray);
+    padding: 1rem;
+    margin: 1rem 0;
+    display: block;
+    text-align: center;
+    border: 1px dashed var(--border-color);
 }

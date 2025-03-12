@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}neuralwired{% endblock %}</title>
+    <title>neuralwired</title>
     <!-- Critical CSS to prevent layout shifts during theme changes and page loads -->
     <style>
         /* Pre-define all critical layout dimensions */
@@ -70,13 +70,6 @@
             align-items: center;
             justify-content: center;
         }
-        
-        @media screen and (max-width: 600px) {
-            /* Remove the header height override to keep it consistent with footer */
-            :root {
-                --header-padding: 0.75rem;
-            }
-        }
     </style>
     <!-- Improved theme flash prevention script - must be before any CSS -->
     <script>
@@ -98,17 +91,42 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    {% block meta %}{% endblock %}
 </head>
 <body>
-    {% include "partials/header.html" %}
+    <header class="site-header" id="header-container">
+        <!-- Header will be dynamically inserted here -->
+    </header>
 
     <div class="container">
-        {% block content %}{% endblock %}
+        <div id="content-container">
+            <!-- All content will be dynamically inserted here -->
+            <div class="loading-indicator">
+                <p>Loading...</p>
+            </div>
+        </div>
 
-        {% include "partials/footer.html" %}
+        <footer id="footer-container">
+            <!-- Footer will be dynamically inserted here -->
+        </footer>
     </div>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    {% block scripts %}{% endblock %}
+
+    <!-- Core application JS -->
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/router.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/error-handler.js') }}"></script>
+    
+    <!-- Components -->
+    <script src="{{ url_for('static', filename='js/components/header.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/footer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/blog.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/page.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/login.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/manage.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/not-found.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/editor.js') }}"></script>
+    
+    <!-- Main application -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>
