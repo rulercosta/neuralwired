@@ -6,3 +6,4 @@ MarkupSafe
 itsdangerous
 click
 gunicorn
+Flask-CORS
