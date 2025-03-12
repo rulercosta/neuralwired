@@ -167,13 +167,13 @@ li {
 .header-icons {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1.5rem; /* Increased from 0.75rem to 1.5rem for more spacing */
     height: calc(var(--header-height) - 2px);
 }
 
 .admin-links {
     display: flex;
-    gap: 0.75rem;
+    gap: 1.5rem; /* Increased from 0.75rem to 1.5rem for more spacing */
     height: 100%;
     align-items: center;
 }
@@ -255,7 +255,7 @@ footer .container {
 
 .social-links {
     display: flex;
-    gap: 1rem;
+    gap: 2rem; /* Increased from 1rem to 2rem for more spacing */
     justify-content: center;
     height: 100%;
     align-items: center;
@@ -678,9 +678,9 @@ textarea {
         padding: 0 0.15rem;
     }
 
-    /* Adjust gap between icons for tighter mobile layout */
+    /* Adjust gap between icons for mobile, but still keep it spacious */
     .admin-links {
-        gap: 0.5rem;
+        gap: 1rem; /* Increased from 0.5rem to 1rem */
     }
 
     .theme-toggle {
@@ -689,11 +689,11 @@ textarea {
     }
 
     .header-icons {
-        gap: 0.5rem;
+        gap: 1rem; /* Increased from 0.5rem to 1rem */
     }
-
-    .admin-links {
-        gap: 0.5rem;
+    
+    .social-links {
+        gap: 1.5rem; /* Increased from default for mobile */
     }
     
     /* Mobile table adjustments */
