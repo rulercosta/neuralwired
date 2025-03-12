@@ -342,6 +342,11 @@ class EditorComponent {
                 
                 try {
                     await api.updateIntroduction(contentHtml);
+                    flashMessage.success('Introduction updated successfully');
+                    
+                    // Force reload of home component data when returning to home
+                    await homeComponent.fetchData();
+                    
                     // Redirect to home
                     router.navigate('/');
                 } catch (error) {

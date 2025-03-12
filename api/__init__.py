@@ -252,15 +252,9 @@ def api_update_intro():
 @api.after_request
 def add_cache_control(response):
     """Add cache control headers to API responses"""
-    # Public endpoints can be cached for a short time
-    if request.path.startswith('/api/content') or request.path.startswith('/api/pages') or request.path.startswith('/api/posts'):
-        if request.method == 'GET':
-            response.headers['Cache-Control'] = 'public, max-age=60'
-        else:
-            # For POST, PUT, DELETE - no caching
-            response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
-    else:
-        # Authentication and other endpoints - no caching
-        response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    # Prevent caching of all API responses to ensure fresh content
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
     
     return response

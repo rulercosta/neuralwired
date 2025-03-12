@@ -109,6 +109,8 @@ class App {
     setupRouting() {
         // Home page
         router.addRoute('/', async () => {
+            // Force refresh of home component data when navigating to home
+            await homeComponent.refreshData();
             await this.renderComponent(homeComponent);
         });
         

@@ -10,6 +10,7 @@ class HomeComponent {
         this.aboutPage = null;
         this.isAuthenticated = false;
         this.isLoading = true; // Add loading state
+        this.lastFetchTime = 0;
     }
 
     setAuthStatus(status) {
@@ -20,7 +21,7 @@ class HomeComponent {
         try {
             this.isLoading = true;
             
-            // Fetch site content (introduction)
+            // Always fetch fresh content after editing - no caching
             this.content = await api.getSiteContent();
             
             // Fetch featured blog posts
@@ -28,6 +29,9 @@ class HomeComponent {
             
             // Fetch recent blog posts
             this.recentPosts = await api.getBlogPosts({ limit: 5 });
+            
+            // Update last fetch time
+            this.lastFetchTime = Date.now();
 
             // TODO: Fetch about page if needed
             
@@ -40,6 +44,15 @@ class HomeComponent {
             this.recentPosts = this.recentPosts || [];
             this.isLoading = false;
         }
+    }
+
+    // Force refresh data when navigating to home after editing
+    async refreshData() {
+        // Only refresh if it's been more than 1 second since last fetch
+        if (Date.now() - this.lastFetchTime > 1000) {
+            await this.fetchData();
+        }
+        return this;
     }
 
     render() {

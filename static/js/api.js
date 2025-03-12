@@ -33,12 +33,22 @@ class ApiClient {
      * Make API request with fetch
      */
     async request(endpoint, options = {}) {
-        const url = `${this.baseUrl}${endpoint}`;
+        // Add cache-busting parameter for GET requests
+        let url = `${this.baseUrl}${endpoint}`;
+        
+        if (options.method === undefined || options.method === 'GET') {
+            // Add cache-busting timestamp to prevent browser caching
+            const separator = url.includes('?') ? '&' : '?';
+            url = `${url}${separator}_t=${Date.now()}`;
+        }
         
         // Set default headers
         if (!options.headers) {
             options.headers = {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
             };
         }
         
@@ -130,7 +140,8 @@ class ApiClient {
     // Content
     async getSiteContent() {
         try {
-            return await this.request('/content');
+            // Add cache-busting timestamp to force fresh content
+            return await this.request(`/content?_=${Date.now()}`);
         } catch (error) {
             console.warn('Error fetching site content:', error);
             // Re-throw error for component handling

@@ -1,7 +1,6 @@
 from flask import Flask, render_template, session, request, jsonify, redirect, send_from_directory
 import os
 from database import init_db, verify_credentials
-from flask_cors import CORS
 
 # Import API blueprint 
 from api import api
@@ -14,14 +13,6 @@ app.config.update(
     UPLOAD_FOLDER=os.path.join(app.static_folder, 'uploads'),  # Add upload folder config
     MAX_CONTENT_LENGTH=16 * 1024 * 1024  # 16MB max upload size
 )
-
-# Configure CORS
-CORS(app, resources={
-    r"/api/*": {
-        "origins": os.environ.get('CORS_ORIGINS', '*'),
-        "supports_credentials": True  # Important for maintaining sessions with CORS
-    }
-})
 
 # Ensure upload folder exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
