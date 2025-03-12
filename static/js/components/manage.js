@@ -75,16 +75,21 @@ class ManagePagesComponent {
         document.querySelectorAll('.delete-page-btn').forEach(button => {
             button.addEventListener('click', async () => {
                 const slug = button.getAttribute('data-slug');
-                if (confirm('Are you sure you want to delete this page?')) {
-                    try {
-                        await api.deletePage(slug);
-                        await this.fetchData();
-                        document.getElementById('content-container').innerHTML = this.render();
-                        this.postRender();
-                    } catch (error) {
-                        console.error(`Error deleting page "${slug}":`, error);
+                
+                // Use custom confirmation dialog instead of browser confirm
+                confirmDialog.show(
+                    'Are you sure you want to delete this page?',
+                    async () => {
+                        try {
+                            await api.deletePage(slug);
+                            await this.fetchData();
+                            document.getElementById('content-container').innerHTML = this.render();
+                            this.postRender();
+                        } catch (error) {
+                            console.error(`Error deleting page "${slug}":`, error);
+                        }
                     }
-                }
+                );
             });
         });
     }
