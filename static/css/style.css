@@ -841,6 +841,12 @@ input.input-error {
     pointer-events: auto; /* Make message itself clickable */
     cursor: pointer;
     text-align: center;
+    border: 1px solid #000; /* Black border in light mode */
+}
+
+/* For dark mode, switch border color */
+:root[data-theme="dark"] .flash-message {
+    border-color: #fff; /* White border in dark mode */
 }
 
 /* Remove the message type border indicators completely */
