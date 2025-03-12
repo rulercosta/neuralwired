@@ -89,7 +89,7 @@
         })();
     </script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
@@ -111,24 +111,24 @@
     </div>
 
     <!-- Core application JS -->
-    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/router.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/components/error-handler.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/components/confirm-dialog.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/components/flash-message.js') }}"></script>
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/router.js"></script>
+    <script src="/static/components/error-handler.js"></script>
+    <script src="/static/components/confirm-dialog.js"></script>
+    <script src="/static/components/flash-message.js"></script>
     
     <!-- Components -->
-    <script src="{{ url_for('static', filename='js/components/header.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/components/footer.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/components/home.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/components/blog.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/components/page.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/components/login.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/components/manage.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/components/not-found.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/components/editor.js') }}"></script>
+    <script src="/static/components/header.js"></script>
+    <script src="/static/components/footer.js"></script>
+    <script src="/static/components/home.js"></script>
+    <script src="/static/components/blog.js"></script>
+    <script src="/static/components/page.js"></script>
+    <script src="/static/components/login.js"></script>
+    <script src="/static/components/manage.js"></script>
+    <script src="/static/components/not-found.js"></script>
+    <script src="/static/components/editor.js"></script>
     
     <!-- Main application -->
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="/static/js/app.js"></script>
 </body>
 </html>

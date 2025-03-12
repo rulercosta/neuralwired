@@ -1,12 +1,27 @@
 from flask import Flask, render_template, session, request, jsonify, redirect, send_from_directory
 import os
 from database import init_db, verify_credentials
-
-# Import API blueprint 
 from api import api
 
-# Initialize app
-app = Flask(__name__)
+# Get project root directory
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+FRONTEND_DIR = os.path.join(PROJECT_ROOT, 'frontend')
+
+# Initialize app with frontend paths
+app = Flask(__name__,
+           template_folder=os.path.join(FRONTEND_DIR, 'public'),
+           static_folder=os.path.join(FRONTEND_DIR, 'src'),
+           static_url_path='/static')
+
+# Additional static folder for components
+app.additional_static_folder = os.path.join(FRONTEND_DIR, 'src', 'js', 'components')
+
+# Add rule to serve from components directory
+@app.route('/static/js/components/<path:filename>')
+def serve_component(filename):
+    """Serve component files"""
+    return send_from_directory(app.additional_static_folder, filename)
+
 app.config.update(
     SECRET_KEY=os.environ.get('SECRET_KEY', os.urandom(32)),  # Use env var if available
     ENV=os.environ.get('FLASK_ENV', 'production'),  # Default to production

@@ -1,12 +1,21 @@
 version: '3'
 
 services:
-  web:
-    build: .
+  backend:
+    build: ./backend
     ports:
       - "5000:5000"
     volumes:
-      - ./blogger.db:/app/blogger.db
+      - ./backend/blogger.db:/app/blogger.db
     env_file:
-      - .env
+      - ./backend/.env
     restart: always
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
