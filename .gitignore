@@ -18,7 +18,6 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-uploads
 
 # Flask specific
 instance/
@@ -40,3 +39,5 @@ content.json
 
 # SQLite database
 *.db
+
+
