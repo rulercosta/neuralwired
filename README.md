@@ -395,3 +395,61 @@ curl -X GET http://localhost:5000/api/uploads/list
 ```bash
 curl -X DELETE http://localhost:5000/api/uploads/filename.jpg \
   -b "session=your_session_cookie"
+```
+
+## Testing
+
+The API includes a comprehensive test suite built with pytest. The tests are organized by module and can be run individually or as a complete suite.
+
+### Running Tests
+
+To run all tests:
+
+```bash
+cd api_backend
+python -m pytest
+```
+
+To run tests from a specific module:
+
+```bash
+python -m pytest tests/test_auth.py
+```
+
+To run a specific test:
+
+```bash
+python -m pytest tests/test_pages.py::test_create_and_get_page
+```
+
+To run tests with verbose output:
+
+```bash
+python -m pytest -v
+```
+
+### Test Coverage
+
+To generate a test coverage report:
+
+```bash
+python -m pytest --cov=app
+```
+
+For a detailed HTML coverage report:
+
+```bash
+python -m pytest --cov=app --cov-report=html
+```
+
+This will create a `htmlcov` directory with the HTML coverage report. Open `htmlcov/index.html` in your browser to view it.
+
+### Test Structure
+
+- `tests/conftest.py`: Contains test fixtures for database, client, and authentication
+- `tests/test_auth.py`: Tests for authentication endpoints
+- `tests/test_pages.py`: Tests for pages and blog posts endpoints
+- `tests/test_settings.py`: Tests for settings endpoints 
+- `tests/test_uploads.py`: Tests for file upload endpoints
+
+Each test module mirrors the structure of the API blueprints for clarity and maintainability.
