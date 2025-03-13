@@ -3,7 +3,7 @@ Settings API routes
 """
 from flask import jsonify, request, current_app
 from app.models.database import get_db
-from app.api.auth.routes import api_login_required
+from app.api.auth.routes import login_required  # Updated from api_login_required
 from . import bp
 
 def get_all_settings():
@@ -102,7 +102,7 @@ def api_get_setting(key):
     return jsonify({"error": "Setting not found"}), 404
 
 @bp.route('', methods=['POST', 'PUT'])
-@api_login_required
+@login_required  # Updated from api_login_required
 def api_update_settings():
     """
     Update multiple settings at once
@@ -128,7 +128,7 @@ def api_update_settings():
         return jsonify({"error": "Failed to update settings"}), 500
 
 @bp.route('/<key>', methods=['PUT'])
-@api_login_required
+@login_required  # Updated from api_login_required
 def api_update_setting(key):
     """
     Update a single setting
@@ -157,7 +157,7 @@ def api_update_setting(key):
         return jsonify({"error": f"Failed to update setting '{key}'"}), 500
 
 @bp.route('/<key>', methods=['DELETE'])
-@api_login_required
+@login_required  # Updated from api_login_required
 def api_delete_setting(key):
     """
     Delete a setting
