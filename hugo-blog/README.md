@@ -1,6 +1,6 @@
 # Neuralwired Blog - Hugo Static Site
 
-This is a static blog generated with Hugo, styled to match the exact look and feel of the original neuralwired blog. The site is completely static, requiring no backend, and can be easily hosted on services like GitHub Pages or Netlify.
+This is a static blog generated with Hugo, styled to match the exact look and feel of the original neuralwired blog. The site is completely static, requiring no backend, and is hosted on GitHub Pages.
 
 ## Project Structure
 

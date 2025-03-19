@@ -1,12 +1,56 @@
+---
+title: "Deploying a Hugo Site to GitHub Pages"
+date: 2023-06-20
+---
+
+## Introduction
+
+GitHub Pages provides a convenient and free way to host Hugo sites directly from a GitHub repository. This post will walk through the process of deploying a Hugo site to GitHub Pages.
+
+## Prerequisites
+
+Before starting, make sure you have:
+
+1. A GitHub account
+2. Git installed on your local machine
+3. A Hugo site ready for deployment
+
+## Setting Up Your Repository
+
+Create a new GitHub repository for your Hugo site. For a project site like this one, any repository name works fine.
+
+## Creating a GitHub Actions Workflow
+
+The easiest way to deploy a Hugo site is with GitHub Actions. Create a workflow file at `.github/workflows/hugo.yml`:
+
+```yaml
+name: Deploy Hugo site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          submodules: true
+          fetch-depth: 0
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
           extended: true
+          
       - name: Build
         run: hugo --minify
+        
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -19,7 +63,7 @@
 Make sure your `config.toml` has the correct baseURL:
 
 ```toml
-baseURL = "https://username.github.io/" # Replace with your actual URL
+baseURL = "https://rulercosta.github.io/neuralwired/" # GitHub Pages project site URL
 ```
 
 ## Pushing Your Changes
@@ -35,14 +79,6 @@ git push origin main
 ## Configuring GitHub Pages
 
 In your repository settings, navigate to the "Pages" section and configure the source to deploy from the `gh-pages` branch that the GitHub Action creates.
-
-## Using a Custom Domain (Optional)
-
-If you want to use a custom domain:
-
-1. Add a CNAME file to your `static` directory with your domain name
-2. Update your DNS settings with your domain provider
-3. Configure the custom domain in your GitHub Pages settings
 
 ## Conclusion
 
