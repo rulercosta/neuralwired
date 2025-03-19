@@ -1,0 +1,3 @@
+<div class="note-block{{ with .Get "type" }} note-{{ . }}{{ end }}">
+    {{ .Inner | markdownify }}
+</div>
