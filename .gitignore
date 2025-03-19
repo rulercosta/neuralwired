@@ -40,4 +40,4 @@ content.json
 # SQLite database
 *.db
 
-public
+public/hugo-blog/
