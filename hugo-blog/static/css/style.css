@@ -165,12 +165,7 @@ li {
     height: calc(var(--header-height) - 2px);
 }
 
-.admin-links {
-    display: flex;
-    gap: 1.5rem; /* Increased from 0.75rem to 1.5rem for more spacing */
-    height: 100%;
-    align-items: center;
-}
+/* Removed admin-links related styles */
 
 .theme-toggle {
     background: none;
@@ -188,34 +183,6 @@ li {
 }
 
 .theme-toggle:hover {
-    opacity: 0.7;
-}
-
-.admin-links a {
-    text-decoration: none;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.admin-links a:hover {
-    text-decoration: underline;
-}
-
-.admin-links .icon-link {
-    font-family: "Space Mono", monospace;
-    font-size: 1.5rem;
-    text-decoration: none;
-    padding: 0 0.25rem;
-    line-height: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.admin-links .icon-link:hover {
-    text-decoration: none;
     opacity: 0.7;
 }
 
@@ -478,15 +445,9 @@ footer .container {
     }
 
     /* Ensure the icons stay a reasonable size on mobile */
-    .admin-links .icon-link {
-        font-size: 1.25rem;
-        padding: 0 0.15rem;
-    }
+    /* Removed admin-links .icon-link related styles */
 
-    /* Adjust gap between icons for mobile, but still keep it spacious */
-    .admin-links {
-        gap: 1rem; /* Increased from 0.5rem to 1rem */
-    }
+    /* Removed admin-links gap adjustment */
 
     .theme-toggle {
         font-size: 1.25rem;
