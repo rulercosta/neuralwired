@@ -386,6 +386,56 @@ footer .container {
     margin-top: 2rem;
 }
 
+/* Post excerpt styling */
+.post-excerpt {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  max-height: 4.5rem; /* Approximately 3 lines of text */
+  position: relative;
+}
+
+.post-excerpt::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  height: 1.5rem;
+  background: linear-gradient(to right, transparent, var(--background-color) 90%);
+}
+
+.post-card {
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  background-color: var(--card-bg);
+}
+
+.post-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.post-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.read-more {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 600px) {
     :root {

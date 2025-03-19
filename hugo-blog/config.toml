@@ -2,6 +2,9 @@ baseURL = "https://rulercosta.github.io/neuralwired/"
 languageCode = "en-us"
 title = "neuralwired"
 
+# Control content summary length
+summaryLength = 30
+
 # Enable syntax highlighting
 pygmentsCodeFences = true
 pygmentsUseClasses = true
@@ -30,6 +33,9 @@ pygmentsUseClasses = true
   
   # Introduction text for homepage
   introduction = "Welcome to my minimalist blog where I write about web development, technology, and programming. This is a static site built with Hugo, styled to match the original site exactly."
+  
+  # Excerpt length - controls default truncation
+  excerptLength = 100
   
   # Social links (used in footer)
   github = "https://github.com/rulercosta"
