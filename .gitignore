@@ -40,3 +40,4 @@ content.json
 # SQLite database
 *.db
 
+public
