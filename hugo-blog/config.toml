@@ -1,0 +1,27 @@
+baseURL = "https://example.com/"
+languageCode = "en-us"
+title = "neuralwired"
+
+# Theme settings - we'll use a custom theme built from existing styling
+theme = ""
+
+# Enable syntax highlighting
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[params]
+  # Site parameters
+  description = "neuralwired blog - thoughts and ideas"
+  author = "neuralwired"
+  
+  # Social links (used in footer)
+  github = "https://github.com"
+  linkedin = "https://linkedin.com"
+  twitter = "https://twitter.com"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
