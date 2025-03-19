@@ -6,6 +6,24 @@ title = "neuralwired"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 
+# Ensure proper MIME types for CSS
+[mediaTypes]
+  [mediaTypes."text/css"]
+    suffixes = ["css"]
+
+[outputFormats]
+  [outputFormats.CSS]
+    mediaType = "text/css"
+    isPlainText = false
+    isHTML = false
+
+# Default static file configuration
+[server]
+  [[server.headers]]
+    for = "/**/*.css"
+    [server.headers.values]
+      Content-Type = "text/css"
+
 [params]
   description = "neuralwired blog - thoughts and ideas"
   author = "neuralwired"

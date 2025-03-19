@@ -2,95 +2,23 @@
 <html lang="en">
 <head><script src="/neuralwired/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=neuralwired/livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Posts - neuralwired</title>
-    
-    <style>
-         
-        :root {
-            --header-height: 60px;
-            --footer-height: 60px;
-            --text-color: #111;
-            --background-color: #fff;
-            --border-solid: #000;
-            --header-bg: #fff;
-        }
-        
-        :root[data-theme="dark"] {
-            --text-color: #eee;
-            --background-color: #111;
-            --border-solid: #fff;
-            --header-bg: #111;
-        }
-        
-         
-        html {
-            visibility: hidden;
-        }
-        
-         
-        html.theme-initializing * {
-            transition: none !important;
-        }
-        
-        body {
-            padding-top: var(--header-height);
-            min-height: 100vh;
-            margin: 0;
-            background-color: var(--background-color);
-        }
-        
-         
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: var(--header-height);
-            background-color: var(--header-bg);
-            border-bottom: 1px solid var(--border-solid);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-        }
-        
-         
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: var(--footer-height);
-            background-color: var(--background-color);
-            border-top: 1px solid var(--border-solid);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
-    
-    <script>
-        (function() {
-            
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            
-            document.documentElement.classList.add('theme-initializing');
-            
-            window.addEventListener('DOMContentLoaded', function() {
-                setTimeout(function() {
-                    document.documentElement.style.visibility = 'visible';
-                }, 0);
-            });
-        })();
-    </script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Posts - neuralwired</title>
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<style>
+     
+</style>
+
+<script>
+     
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="/neuralwired/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 <body>
     <header class="site-header" id="header-container">
