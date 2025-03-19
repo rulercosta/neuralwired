@@ -41,3 +41,5 @@ content.json
 *.db
 
 public/hugo-blog/
+
+hugo-blog
