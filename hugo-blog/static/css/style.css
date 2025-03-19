@@ -436,6 +436,30 @@ footer .container {
   text-decoration: underline;
 }
 
+/* Section Header Styling */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.section-header h2 {
+  margin: 0;
+}
+
+.view-all {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color 0.2s ease;
+}
+
+.view-all:hover {
+  text-decoration: underline;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 600px) {
     :root {
