@@ -1,0 +1,14 @@
+{
+    "posts": [
+        {{- range $index, $page := where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
+        {{- if $index -}}, {{- end }}
+        {
+            "title": {{ .Title | jsonify }},
+            "content": {{ .Plain | jsonify }},
+            "permalink": {{ .Permalink | jsonify }},
+            "summary": {{ .Summary | jsonify }},
+            "date": {{ .Date.Format "2006-01-02" | jsonify }}
+        }
+        {{- end -}}
+    ]
+}

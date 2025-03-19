@@ -31,3 +31,9 @@ markup:
     renderer:
       unsafe: true # Allows HTML in markdown
 theme: "neuralwired"
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON

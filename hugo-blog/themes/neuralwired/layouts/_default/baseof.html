@@ -49,6 +49,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
     <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="{{ "js/search.js" | relURL }}" defer></script>
 </head>
 <body>
     <header class="site-header">
@@ -58,6 +60,10 @@
             </div>
             <div class="header-right">
                 <div class="header-icons">
+                    <div class="search-container">
+                        <input type="text" id="search-input" placeholder="Search..." aria-label="Search">
+                        <div id="search-results" class="search-results"></div>
+                    </div>
                     <button class="theme-toggle icon-link" title="Toggle theme" id="theme-toggle">◐</button>
                 </div>
             </div>
