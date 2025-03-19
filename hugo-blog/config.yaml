@@ -13,6 +13,10 @@ menu:
       url: "/blog"
       weight: 2
 
+taxonomies:
+  tag: "tags"
+  category: "categories"
+
 params:
   mainSections: ["posts"]
   description: "Personal blog about machine learning, deep learning, and other technical topics"
