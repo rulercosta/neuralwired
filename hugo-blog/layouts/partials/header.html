@@ -6,7 +6,11 @@
         <div class="header-icons">
             <button class="theme-toggle icon-link" title="Toggle theme">◐</button>
             <div class="admin-links">
-                <a href="https://github.com/username/repo/edit/main/content{{ .File.Path }}" class="login-link icon-link" title="Edit on GitHub">→</a>
+                {{ if and .File .File.Path }}
+                <a href="https://github.com/rulercosta/neuralwired/edit/main/content/{{ .File.Path }}" class="login-link icon-link" title="Edit on GitHub">→</a>
+                {{ else }}
+                <a href="https://github.com/rulercosta/neuralwired" class="login-link icon-link" title="View on GitHub">→</a>
+                {{ end }}
             </div>
         </div>
     </div>
