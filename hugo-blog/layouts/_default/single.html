@@ -2,7 +2,7 @@
 <header>
     <div class="site-nav page-nav">
         <ul>
-            <li><a href="{{ if .Parent }}{{ .Parent.Permalink }}{{ else }}/{{ end }}">← back</a></li>
+            <li><a href="{{ if .Parent }}{{ .Parent.Permalink }}{{ else }}{{ .Site.BaseURL }}{{ end }}">← back</a></li>
             {{ if .File }}
             <li><a href="https://github.com/rulercosta/neuralwired/edit/main/content/{{ .File.Path }}" target="_blank">edit</a></li>
             {{ end }}

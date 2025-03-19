@@ -4,7 +4,7 @@
 	<meta name="generator" content="Hugo 0.145.0"><script src="/neuralwired/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=neuralwired/livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home - neuralwired</title>
+<title>neuralwired - neuralwired</title>
 
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -25,7 +25,7 @@
     <header class="site-header" id="header-container">
         <div class="container">
     <div class="header-left">
-        <a href="/">neuralwired</a>
+        <a href="http://localhost:1313/neuralwired/">neuralwired</a>
     </div>
     <div class="header-right">
         <div class="header-icons">
@@ -44,21 +44,23 @@
     <div class="container">
         <div id="content-container">
             
-<header>
+<div class="homepage-container">
     <div class="intro-section">
-        <h1>neuralwired blog</h1>
-        <p>Welcome to my minimalist blog where I write about web development, technology, and programming. This is a static site built with Hugo, styled to match the original site exactly.</p>
+        <h1>neuralwired</h1>
+        
+            <div class="site-intro"><p>Welcome to my minimalist blog where I write about web development, technology, and programming. This is a static site built with Hugo.</p>
+</div>
+        
+        
+            <div class="site-intro">Welcome to my minimalist blog where I write about web development, technology, and programming. This is a static site built with Hugo, styled to match the original site exactly.</div>
+        
     </div>
-</header>
 
-<main>
-    
-    
-    <section id="featured" class="content-section">
-        <h1>featured</h1>
-        <div class="featured-posts">
+    <section class="content-section featured-posts">
+        <h2>Featured Posts</h2>
+        <div class="post-grid">
             
-            <article class="featured-post">
+            <article class="post-card">
                 <h3><a href="http://localhost:1313/neuralwired/posts/welcome/">Welcome to Neuralwired</a></h3>
                 <div class="post-meta">
                     <span class="post-date">2024-01-01</span>
@@ -80,7 +82,7 @@
                 <a href="http://localhost:1313/neuralwired/posts/welcome/" class="read-more">read more →</a>
             </article>
             
-            <article class="featured-post">
+            <article class="post-card">
                 <h3><a href="http://localhost:1313/neuralwired/posts/second-post/">Working with Markdown in Hugo</a></h3>
                 <div class="post-meta">
                     <span class="post-date">2023-06-15</span>
@@ -128,7 +130,7 @@ _You **can** combine them_
                 <a href="http://localhost:1313/neuralwired/posts/second-post/" class="read-more">read more →</a>
             </article>
             
-            <article class="featured-post">
+            <article class="post-card">
                 <h3><a href="http://localhost:1313/neuralwired/posts/first-post/">Getting Started with Hugo Static Site Generator</a></h3>
                 <div class="post-meta">
                     <span class="post-date">2023-06-10</span>
@@ -154,22 +156,22 @@ _You **can** combine them_
             
         </div>
     </section>
-    
 
-    <section id="recent-posts" class="content-section">
-        <h1>recent posts</h1>
-        <div class="post-list">
+    <section class="content-section latest-posts">
+        <div class="section-header">
+            <h2>Latest Posts</h2>
+            <a href="http://localhost:1313/neuralwired/posts" class="view-all">view all →</a>
+        </div>
+        <div class="post-grid">
             
-            
-                
-                <article class="post-item">
-                    <h3><a href="http://localhost:1313/neuralwired/posts/welcome/">Welcome to Neuralwired</a></h3>
-                    <div class="post-meta">
-                        <span class="post-date">2024-01-01</span>
-                    </div>
-                    <div class="post-excerpt">
-                        
-                            <p>Hi, I&rsquo;m neuralwired! This blog is dedicated to exploring the fascinating world of machine learning, deep learning, and various technical topics. Here, you&rsquo;ll find in-depth articles, tutorials, and insights about:</p>
+            <article class="post-card">
+                <h3><a href="http://localhost:1313/neuralwired/posts/welcome/">Welcome to Neuralwired</a></h3>
+                <div class="post-meta">
+                    <span class="post-date">2024-01-01</span>
+                </div>
+                <div class="post-excerpt">
+                    
+                        <p>Hi, I&rsquo;m neuralwired! This blog is dedicated to exploring the fascinating world of machine learning, deep learning, and various technical topics. Here, you&rsquo;ll find in-depth articles, tutorials, and insights about:</p>
 <ul>
 <li>Machine Learning Algorithms</li>
 <li>Deep Neural Networks</li>
@@ -179,19 +181,19 @@ _You **can** combine them_
 <li>Software Engineering</li>
 </ul>
 <p>Stay tuned for upcoming posts!</p>
-                        
-                    </div>
-                    <a href="http://localhost:1313/neuralwired/posts/welcome/" class="read-more">read more →</a>
-                </article>
-                
-                <article class="post-item">
-                    <h3><a href="http://localhost:1313/neuralwired/posts/third-post/">Deploying a Hugo Site to GitHub Pages</a></h3>
-                    <div class="post-meta">
-                        <span class="post-date">2023-06-20</span>
-                    </div>
-                    <div class="post-excerpt">
-                        
-                            <h2 id="introduction">Introduction</h2>
+                    
+                </div>
+                <a href="http://localhost:1313/neuralwired/posts/welcome/" class="read-more">read more →</a>
+            </article>
+            
+            <article class="post-card">
+                <h3><a href="http://localhost:1313/neuralwired/posts/third-post/">Deploying a Hugo Site to GitHub Pages</a></h3>
+                <div class="post-meta">
+                    <span class="post-date">2023-06-20</span>
+                </div>
+                <div class="post-excerpt">
+                    
+                        <h2 id="introduction">Introduction</h2>
 <p>GitHub Pages provides a convenient and free way to host Hugo sites directly from a GitHub repository. This post will walk through the process of deploying a Hugo site to GitHub Pages.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Before starting, make sure you have:</p>
@@ -202,19 +204,19 @@ _You **can** combine them_
 </ol>
 <h2 id="setting-up-your-repository">Setting Up Your Repository</h2>
 <p>Create a new GitHub repository for your Hugo site. For a project site like this one, any repository name works fine.</p>
-                        
-                    </div>
-                    <a href="http://localhost:1313/neuralwired/posts/third-post/" class="read-more">read more →</a>
-                </article>
-                
-                <article class="post-item">
-                    <h3><a href="http://localhost:1313/neuralwired/posts/second-post/">Working with Markdown in Hugo</a></h3>
-                    <div class="post-meta">
-                        <span class="post-date">2023-06-15</span>
-                    </div>
-                    <div class="post-excerpt">
-                        
-                            <h2 id="introduction-to-markdown">Introduction to Markdown</h2>
+                    
+                </div>
+                <a href="http://localhost:1313/neuralwired/posts/third-post/" class="read-more">read more →</a>
+            </article>
+            
+            <article class="post-card">
+                <h3><a href="http://localhost:1313/neuralwired/posts/second-post/">Working with Markdown in Hugo</a></h3>
+                <div class="post-meta">
+                    <span class="post-date">2023-06-15</span>
+                </div>
+                <div class="post-excerpt">
+                    
+                        <h2 id="introduction-to-markdown">Introduction to Markdown</h2>
 <p>Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents. Created by John Gruber in 2004, Markdown is now one of the world&rsquo;s most popular markup languages.</p>
 <h2 id="basic-markdown-syntax">Basic Markdown Syntax</h2>
 <h3 id="headers">Headers</h3>
@@ -250,19 +252,19 @@ _You **can** combine them_
 <pre tabindex="0"><code>[Link Text](url)
 </code></pre><h2 id="extended-markdown-in-hugo">Extended Markdown in Hugo</h2>
 <p>Hugo uses a Markdown processor called Goldmark that supports standard Markdown and various extensions. Some of the extended features include:</p>
-                        
-                    </div>
-                    <a href="http://localhost:1313/neuralwired/posts/second-post/" class="read-more">read more →</a>
-                </article>
-                
-                <article class="post-item">
-                    <h3><a href="http://localhost:1313/neuralwired/posts/first-post/">Getting Started with Hugo Static Site Generator</a></h3>
-                    <div class="post-meta">
-                        <span class="post-date">2023-06-10</span>
-                    </div>
-                    <div class="post-excerpt">
-                        
-                            <h2 id="introduction">Introduction</h2>
+                    
+                </div>
+                <a href="http://localhost:1313/neuralwired/posts/second-post/" class="read-more">read more →</a>
+            </article>
+            
+            <article class="post-card">
+                <h3><a href="http://localhost:1313/neuralwired/posts/first-post/">Getting Started with Hugo Static Site Generator</a></h3>
+                <div class="post-meta">
+                    <span class="post-date">2023-06-10</span>
+                </div>
+                <div class="post-excerpt">
+                    
+                        <h2 id="introduction">Introduction</h2>
 <p>Hugo is a fast and modern static site generator written in Go. It&rsquo;s designed for building websites quickly and efficiently, with great flexibility for various outputs.</p>
 <h2 id="why-use-hugo">Why Use Hugo?</h2>
 <p>Hugo has several advantages that make it a popular choice for static sites:</p>
@@ -274,18 +276,14 @@ _You **can** combine them_
 </ul>
 <h2 id="basic-components">Basic Components</h2>
 <p>A typical Hugo site contains these key components:</p>
-                        
-                    </div>
-                    <a href="http://localhost:1313/neuralwired/posts/first-post/" class="read-more">read more →</a>
-                </article>
-                
-                <div class="view-all">
-                    <a href="/posts/" class="view-all-link">view all posts →</a>
+                    
                 </div>
+                <a href="http://localhost:1313/neuralwired/posts/first-post/" class="read-more">read more →</a>
+            </article>
             
         </div>
     </section>
-</main>
+</div>
 
         </div>
 
