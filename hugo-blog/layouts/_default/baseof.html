@@ -18,10 +18,10 @@
         </footer>
     </div>
 
-    <!-- Theme toggle script -->
+    <!-- Theme toggle script - improved to prevent flashing -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Setup theme toggle
+            // Setup theme toggle with no transitions
             const themeToggle = document.querySelector('.theme-toggle');
             if (themeToggle) {
                 themeToggle.addEventListener('click', () => {
@@ -32,10 +32,9 @@
                 });
             }
             
-            // Remove theme-initializing class to allow transitions
-            setTimeout(() => {
-                document.documentElement.classList.remove('theme-initializing');
-            }, 200);
+            // No need for theme-initializing class or setTimeout
+            // Just ensure everything is loaded before allowing interactions
+            document.body.style.visibility = 'visible';
         });
     </script>
 </body>

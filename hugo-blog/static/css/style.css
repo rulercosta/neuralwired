@@ -9,6 +9,8 @@
     --editor-bg: #fff;
     --editor-text: #111;
     --border-solid: #000;
+    --card-bg: #fff;
+    --text-muted: #555;
     
     /* Define standard sizes to prevent layout shifts */
     --header-height: 60px;
@@ -26,21 +28,13 @@
     --editor-bg: #1e1e1e;
     --editor-text: #eee;
     --border-solid: #fff;
+    --card-bg: #1a1a1a;
+    --text-muted: #bbb;
 }
 
-/* Theme transition control - only apply transitions when ready */
-html.theme-initializing * {
+/* Remove all theme transitions to prevent flashing */
+html * {
     transition: none !important;
-}
-
-html:not(.theme-initializing) {
-    transition: background-color 0.3s ease;
-}
-
-html:not(.theme-initializing) body,
-html:not(.theme-initializing) .site-header,
-html:not(.theme-initializing) footer {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 * {
@@ -310,7 +304,11 @@ footer .container {
 }
 
 .post-card {
-    margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  background-color: var(--card-bg);
 }
 
 .post-card h3 {
@@ -396,22 +394,9 @@ footer .container {
   position: relative;
 }
 
+/* Remove the gradient effect that was causing the band */
 .post-excerpt::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 30%;
-  height: 1.5rem;
-  background: linear-gradient(to right, transparent, var(--background-color) 90%);
-}
-
-.post-card {
-  padding: 1.5rem;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  margin-bottom: 1.5rem;
-  background-color: var(--card-bg);
+  display: none; /* Hide the gradient element completely */
 }
 
 .post-card h3 {
