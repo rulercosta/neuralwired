@@ -5,7 +5,7 @@ This is a static blog generated with Hugo, styled to match the exact look and fe
 ## Project Structure
 
 ```
-hugo-blog/
+blog/
 ├── archetypes/
 ├── content/              # All blog posts and page content in Markdown
 │   ├── posts/            # Blog posts directory
@@ -44,7 +44,7 @@ Your content here in Markdown format.
 2. Run the development server:
 
 ```bash
-cd hugo-blog
+cd blog
 hugo server -D
 ```
 
