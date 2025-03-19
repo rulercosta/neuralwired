@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/neuralwired/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=neuralwired/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deploying a Hugo Site to GitHub Pages - neuralwired</title>
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<style>
+     
+    body {
+        visibility: hidden;
+    }
+    
+     
+    * {
+        transition: none !important;
+    }
+</style>
+
+<script>
+    (function() {
+        
+        var savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        
+        window.addEventListener('DOMContentLoaded', function() {
+            document.body.style.visibility = 'visible';
+        });
+    })();
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="/neuralwired/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    <header class="site-header" id="header-container">
+        <div class="container">
+    <div class="header-left">
+        <a href="http://localhost:1313/neuralwired/">neuralwired</a>
+    </div>
+    <div class="header-right">
+        <div class="header-icons">
+            <button class="theme-toggle icon-link" title="Toggle theme">◐</button>
+        </div>
+    </div>
+</div>
+
+    </header>
+
+    <div class="container">
+        <div id="content-container">
+            
+<header>
+    <div class="site-nav page-nav">
+        <ul>
+            <li><a href="http://localhost:1313/neuralwired/posts/">← back</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <article class="blog-post">
+        <header class="post-header">
+            <h1 class="post-title">Deploying a Hugo Site to GitHub Pages</h1>
+            <div class="post-meta">
+                <span class="post-date">2023-06-20</span>
+            </div>
+        </header>
+        <div class="post-content">
+            <h2 id="introduction">Introduction</h2>
+<p>GitHub Pages provides a convenient and free way to host Hugo sites directly from a GitHub repository. This post will walk through the process of deploying a Hugo site to GitHub Pages.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before starting, make sure you have:</p>
+<ol>
+<li>A GitHub account</li>
+<li>Git installed on your local machine</li>
+<li>A Hugo site ready for deployment</li>
+</ol>
+<h2 id="setting-up-your-repository">Setting Up Your Repository</h2>
+<p>Create a new GitHub repository for your Hugo site. For a project site like this one, any repository name works fine.</p>
+<h2 id="creating-a-github-actions-workflow">Creating a GitHub Actions Workflow</h2>
+<p>The easiest way to deploy a Hugo site is with GitHub Actions. Create a workflow file at <code>.github/workflows/hugo.yml</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy Hugo site to GitHub Pages</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">submodules</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-hugo@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">hugo-version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;latest&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">extended</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">hugo --minify</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-gh-pages@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">github_token</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.GITHUB_TOKEN }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">publish_dir</span><span class="p">:</span><span class="w"> </span><span class="l">./public</span><span class="w">
+</span></span></span></code></pre></div><h2 id="configuring-baseurl">Configuring baseURL</h2>
+<p>Make sure your <code>config.toml</code> has the correct baseURL:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">baseURL</span> <span class="p">=</span> <span class="s2">&#34;https://rulercosta.github.io/neuralwired/&#34;</span> <span class="c"># GitHub Pages project site URL</span>
+</span></span></code></pre></div><h2 id="pushing-your-changes">Pushing Your Changes</h2>
+<p>After setting up the workflow, push your changes to GitHub:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;Set up GitHub Pages deployment&#34;</span>
+</span></span><span class="line"><span class="cl">git push origin main
+</span></span></code></pre></div><h2 id="configuring-github-pages">Configuring GitHub Pages</h2>
+<p>In your repository settings, navigate to the &ldquo;Pages&rdquo; section and configure the source to deploy from the <code>gh-pages</code> branch that the GitHub Action creates.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>With GitHub Actions handling the build and deployment process, publishing updates to your Hugo site is as simple as committing changes to your repository. This workflow allows you to focus on creating content rather than managing deployment processes.</p>
+
+        </div>
+    </article>
+</main>
+
+        </div>
+
+        <footer id="footer-container">
+            <div class="container">
+    <div class="social-links">
+        <a href="https://github.com/rulercosta" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+</div>
+
+        </footer>
+    </div>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                });
+            }
+            
+            
+            
+            document.body.style.visibility = 'visible';
+        });
+    </script>
+</body>
+</html>
