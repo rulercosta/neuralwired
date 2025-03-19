@@ -1,0 +1,29 @@
+baseURL: "https://yourdomain.com"
+languageCode: "en-us"
+title: "neuralwired"
+disableKinds: ["taxonomy", "term"]
+enableGitInfo: true
+
+menu:
+  main:
+    - name: "Home"
+      url: "/"
+      weight: 1
+    - name: "Blog"
+      url: "/blog"
+      weight: 2
+
+params:
+  mainSections: ["posts"]
+  description: "Personal blog about machine learning, deep learning, and other technical topics"
+  author: "neuralwired"
+  social:
+    github: "https://github.com"
+    twitter: "https://twitter.com"
+    linkedin: "https://linkedin.com"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # Allows HTML in markdown
+theme: "neuralwired"
